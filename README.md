@@ -7,3 +7,11 @@
 cd gym-fraud
 pip install -e .
 ```
+
+# Usage 
+```python
+import gym
+import gym_fraud
+env = gym.make('fraud-v0')
+
+```
