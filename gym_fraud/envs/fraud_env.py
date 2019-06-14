@@ -15,6 +15,7 @@ class FraudEnv(gym.Env):
         self.observation_space = spaces.Discrete(self.df_xy.shape[0])
 
         self.ob = self._get_random_initial_state()
+        print("self.ob inside __init__ :: ", self.ob)
         self.episode_over = False
         self.turns = 0
         self.sum_rewards = 0.0
@@ -54,7 +55,9 @@ class FraudEnv(gym.Env):
         self.predicted_action = self._take_action(predicted_action_index)
         self.reward = self._get_reward(predicted_action_index)
         self.ob = self._get_next_state()
-        if self.turns > 100 or self.sum_rewards > 50:
+        print("turns :: ", self.turns)
+        print("sum of rewards :: ", self.sum_rewards)
+        if self.turns > 10 or self.sum_rewards > 2:
             self.episode_over = True
 
         return self.ob, self.reward, self.episode_over, {}
@@ -82,7 +85,7 @@ class FraudEnv(gym.Env):
                 """
         assert action_index < len(self.ACTION_LOOKUP)
         self.action = action_index
-        # print(action)
+        print("=========== action taken :: ", self.action)
         return self.action
 
     def _get_random_initial_state(self):
@@ -96,7 +99,9 @@ class FraudEnv(gym.Env):
                 :return:
                 """
         df = self.df_xy
+        print("========== inside getrewards, current_state_index :: ", self.current_state_index)
         labelled_action = df.iloc[self.current_state_index]['Class']
+        print("========== predicted_action, labelled_action :: ", predicted_action, labelled_action)
         reward = 0.0
         if labelled_action == 0.0:
             if predicted_action == 0.0:
@@ -108,6 +113,8 @@ class FraudEnv(gym.Env):
                 reward = 1.0
             else:
                 reward = -1.0
+        print("========== final reward :: ", reward)
+        self.sum_rewards += reward
         return reward
 
     def _get_next_state(self):
@@ -119,7 +126,9 @@ class FraudEnv(gym.Env):
         new_state_index = self.current_state_index + 1
         next_state = df.iloc[new_state_index]
         self.current_state_index = new_state_index
+        print("================== getting next_state :: ", next_state)
         return next_state
 
     def _seed(self):
         return
+    
