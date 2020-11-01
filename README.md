@@ -46,6 +46,17 @@ achieved state-of-the-art performance.
 
 # Algorithm
 
-# Results 
+<img src="./images/algo_1.png" width="60%" height="80%"></img>
+<img src="./images/algo_2.png" width="60%" height="80%"></img>
+
+# Results and Evaluation
+
+Table 1 represents the accuracy score of various models that have been pro- posed for classifying fraudulent and non-fraudulent transactions. After ex- tensive training, our model was able to correctly classify fraudulent and non- fraudulent transaction with 90.29% accuracy on test data. <br><br>
+A comparison of classification accuracy of multiple models discussed in section 4 against our DQN-based model is elaborated in Table 1.<br><br>
+According to the results, artificial neural networks perform the best when given a classification problem such as credit-card fraud detection with 99% accuracy. Random forest model and Logistic Regression algorithm looks promising for our dataset. They have high true positive rate and low false positive rate. Our model has achieved state-of-the-art performance on a highly imbal- ance credit-card fraud data-set and was able to correctly classify fraudulent and non-fraudulent transactions 90.29% of the time. This accuracy opens the door to many opportunities of exploring the scope of reinforcement learning in the field of classification problems and decision making process. By exploring better reward functions and performing hyper-parameter tuning, we can increase the accuracy of our model even more.<br><br>
+
+<img src="./images/table_1.png" width="60%" height="80%"></img>
 
 # Research Paper
+
+<p style="text-color:red">In review.</p>
